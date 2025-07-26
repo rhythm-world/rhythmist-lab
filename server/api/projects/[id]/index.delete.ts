@@ -14,4 +14,5 @@ export default defineEventHandler(async (ev) => {
     ));
   if (!res.rowCount)
     throw createError({ statusCode: 404 });
+  await ProjectBlobStore.removeItem(`${id}:music`);
 });

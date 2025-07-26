@@ -75,7 +75,8 @@ async function regenerate() {
                 :disabled="project.status !== 'completed'"
                 variant="outline"
                 color="neutral"
-                @click="regenerate"
+                icon="lucide:refresh-ccw"
+                @click="regenerate()"
               >
                 重新生成
               </UButton>
