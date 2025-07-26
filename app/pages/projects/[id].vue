@@ -1,10 +1,10 @@
 <script setup lang="ts">
 const route = useRoute();
-const { data: project, error, pending } = await useFetch(`/api/projects/${route.params.id}`);
+const { data: project, error, pending, refresh } = await useFetch(`/api/projects/${route.params.id}`);
 
 const remove = useAsyncState(
   async () => {
-    await $fetch(`/api/projects/${route.params.id}`, { method: 'DELETE' });
+    await $fetch(`/api/projects/:id`, { method: 'DELETE', params: { id: route.params.id } });
     await navigateTo('/');
   },
   null,
@@ -12,6 +12,14 @@ const remove = useAsyncState(
     immediate: false,
   },
 );
+
+async function regenerate() {
+  await $fetch('/api/projects/:id/generate-background', {
+    method: 'POST',
+    params: { id: route.params.id },
+  });
+  refresh();
+}
 </script>
 
 <template>
@@ -63,6 +71,16 @@ const remove = useAsyncState(
                 target="_blank"
               >
                 下载
+              </UButton>
+
+              <UButton
+                class="mr-3"
+                :disabled="project.status !== 'completed'"
+                variant="outline"
+                color="neutral"
+                @click="regenerate"
+              >
+                重新生成
               </UButton>
 
               <UModal :ui="{ title: 'text-xl' }">

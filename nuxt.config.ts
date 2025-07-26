@@ -1,6 +1,13 @@
 export default defineNuxtConfig({
   compatibilityDate: '2025-07-24',
 
+  app: {
+    head: {
+      htmlAttrs: { lang: 'zh-CN' },
+      title: 'Rhythmist Lab',
+    },
+  },
+
   ssr: false,
 
   modules: [
