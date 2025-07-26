@@ -72,7 +72,7 @@ async function regenerate() {
 
               <UButton
                 class="mr-3"
-                :disabled="project.status !== 'completed'"
+                :disabled="project.status === 'completed'"
                 variant="outline"
                 color="neutral"
                 icon="lucide:refresh-ccw"
