@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "auth:generate": "cli generate --config ./server/utils/auth.ts --output ./server/utils/db/auth-schema.ts",
-    "build": "nuxt build && cp -R ./drizzle ./dist/drizzle",
+    "build": "nuxt build && cp -R ./drizzle ./.netlify/functions-internal/server/drizzle",
     "dev": "netlify dev",
     "lint": "eslint . && autocorrect --lint",
     "lint:fix": "eslint . --fix && autocorrect --fix",

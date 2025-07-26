@@ -2,9 +2,6 @@
 command = "bun run build"
 publish = "dist"
 
-[functions]
-included_files = ["drizzle/*"]
-
 [dev]
 command = "bun run nuxt dev"
 port = 8608
