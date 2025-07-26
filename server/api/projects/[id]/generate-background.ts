@@ -11,8 +11,10 @@ const EXAMPLE_AUDIO_BASE64 = toBase64(await useStorage('assets:server').getItemR
 const Params = z.object({ id: z.uuidv7() });
 
 export default defineEventHandler(async (ev) => {
-  const { user } = await useAuthOrThrow(ev);
+  if (ev.method !== 'POST')
+    throw createError({ statusCode: 405 });
   const { id } = await getValidatedRouterParams(ev, Params.parse);
+  const { user } = await useAuthOrThrow(ev);
 
   const [p] = await db
     .select()

@@ -4,7 +4,7 @@ const { data: project, error, pending, refresh } = await useFetch(`/api/projects
 
 const remove = useAsyncState(
   async () => {
-    await $fetch(`/api/projects/:id`, { method: 'DELETE', params: { id: route.params.id } });
+    await $fetch(`/api/projects/${route.params.id}`, { method: 'DELETE' });
     await navigateTo('/');
   },
   null,
@@ -14,10 +14,7 @@ const remove = useAsyncState(
 );
 
 async function regenerate() {
-  await $fetch('/api/projects/:id/generate-background', {
-    method: 'POST',
-    params: { id: route.params.id },
-  });
+  await $fetch(`/api/projects/${route.params.id}/generate-background`, { method: 'POST' });
   refresh();
 }
 </script>
