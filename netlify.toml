@@ -1,0 +1,8 @@
+[build]
+command = "bun run build"
+publish = "dist"
+
+[dev]
+command = "bun run nuxt dev"
+port = 8608
+targetPort = 8618

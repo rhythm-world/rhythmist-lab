@@ -1,0 +1,55 @@
+{
+  "name": "rhythmist-lab",
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "auth:generate": "cli generate --config ./server/utils/auth.ts --output ./server/utils/db/auth-schema.ts",
+    "build": "nuxt build && cp -r ./drizzle ./dist/drizzle",
+    "dev": "netlify dev",
+    "lint": "eslint . && autocorrect --lint",
+    "lint:fix": "eslint . --fix && autocorrect --fix",
+    "postinstall": "nuxt prepare",
+    "preview": "nuxt preview",
+    "db:generate": "drizzle-kit generate",
+    "db:studio": "netlify dev:exec drizzle-kit studio"
+  },
+  "dependencies": {
+    "@google/genai": "^1.11.0",
+    "@iconify-json/logos": "^1.2.5",
+    "@netlify/blobs": "^10.0.7",
+    "@netlify/neon": "^0.1.0",
+    "@nuxt/ui": "^3.3.0",
+    "@nuxt/ui-pro": "^3.3.0",
+    "@octokit/app": "^16.0.1",
+    "@octokit/request-error": "^7.0.0",
+    "@types/uuid": "^10.0.0",
+    "@vueuse/core": "^13.5.0",
+    "better-auth": "^1.3.3",
+    "drizzle-orm": "^0.44.3",
+    "jszip": "^3.10.1",
+    "nuxt": "^4.0.1",
+    "unstorage": "^1.16.1",
+    "uuid": "^11.1.0",
+    "vue": "^3.5.18",
+    "vue-router": "^4.5.1",
+    "zod": "^4.0.10"
+  },
+  "devDependencies": {
+    "@antfu/eslint-config": "^4.19.0",
+    "@better-auth/cli": "^1.3.3",
+    "@iconify-json/lucide": "^1.2.58",
+    "@typed-sigterm/eslint-config": "^1.5.0",
+    "@vueuse/nuxt": "^13.5.0",
+    "autocorrect-node": "^2.14.0",
+    "drizzle-kit": "^0.31.4",
+    "eslint": "^9.31.0",
+    "netlify-cli": "^22.4.0"
+  },
+  "overrides": {
+    "better-sqlite3": "npm:blank-package@7.0.0"
+  },
+  "trustedDependencies": [
+    "@parcel/watcher",
+    "@tailwindcss/oxide"
+  ]
+}
