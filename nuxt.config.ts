@@ -15,7 +15,6 @@ export default defineNuxtConfig({
   },
 
   nitro: {
-    preset: 'netlify',
     esbuild: {
       options: {
         target: 'esnext',
